@@ -7,9 +7,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //importar rotas de categoria
-const categoriaRoutes = require("./routes/alunoRoutes");
+const alunoRoutes = require("./routes/alunoRoutes");
 //para utilizar as rotas de categoria
-app.use("/categorias", categoriaRoutes);
+app.use("/alunos", alunoRoutes);
 
 //importar rotas de clientes
 const clienteRoutes = require("./routes/clienteRoutes");
