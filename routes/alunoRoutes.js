@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-let categorias = [
+let alunos = [
     {
         id : 1,
         nome: "Scalet",
@@ -17,22 +17,22 @@ let categorias = [
 
 //rota
 router.get("/", (req, res) => {
-    res.status(200).json(categorias)
+    res.status(200).json(alunos)
 })
 
 
 //rota por ID
 router.get("/:id", (req, res) => {
     let id = Number(req.params.id);
-    let categoria = categorias.find(cat => cat.id === id);
+    let aluno = alunos.find(al => al.id === id);
 
-    if(!categoria){
+    if(!aluno){
         return res.status(404).json({
-            mensagem: 'Categoria não encontrada'
+            mensagem: 'Aluno não encontrado'
         });
     }
 
-    res.status(200).json(categoria);
+    res.status(200).json(aluno);
 })
 
 
@@ -47,12 +47,12 @@ router.post("/", (req, res) => {
     }
 
     let novoRegistro = {
-        id: categorias.length + 1,
+        id: alunos.length + 1,
         nome,
         descricao
     };
 
-    categorias.push(novoRegistro);
+    alunos.push(novoRegistro);
     res.status(201).json(novoRegistro);
 });
 
@@ -60,21 +60,21 @@ router.post("/", (req, res) => {
 //Editar
 router.put("/:id", (req, res) => {
     let id = Number(req.params.id);
-    let categoria = categorias.find(cat => cat.id === id);
+    let aluno = alunos.find(al => al.id === id);
     let{nome, descricao} = req.body;
 
-    if(!categoria){
+    if(!aluno){
         return res.status(400).json({
-            mensagem : "Categoria não encontrada"
+            mensagem : "Aluno não encontrado"
         });
     }
 
-    categoria.nome = nome;
-    categoria.descricao = descricao;
+    aluno.nome = nome;
+    aluno.descricao = descricao;
 
     res.status(200).json({
-        mensagem:"Categoria atualizada",
-        categoria
+        mensagem:"Aluno atualizado",
+        aluno
     });
 });
 
@@ -82,17 +82,17 @@ router.put("/:id", (req, res) => {
     router.delete("/:id", (req, res) => {
     let id = parseInt(req.params.id);
 
-    let indice = categorias.findIndex((c) => c.id === id);
+    let indice = alunos.findIndex((a) => a.id === id);
 
     if(indice === -1){
         return res.status(404).json({
-            mensagem: "Categoria não encontrada"
+            mensagem: "Aluno não encontrado"
         });
     }
 
-    categorias.splice(indice, 1);
+    alunos.splice(indice, 1);
     res.status(200).json({
-        mensagem: "Categoria removida com sucesso"
+        mensagem: "Aluno removido com sucesso"
     });
 });
 

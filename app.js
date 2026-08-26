@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //importar rotas de categoria
-const categoriaRoutes = require("./routes/categoriaRoutes");
+const categoriaRoutes = require("./routes/alunoRoutes");
 //para utilizar as rotas de categoria
 app.use("/categorias", categoriaRoutes);
 
