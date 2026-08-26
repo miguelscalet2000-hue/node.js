@@ -28,7 +28,7 @@ app.use("/funcionarios", funcionarioRoutes);
 
 //rota principal
 app.get("/", (req, res) =>{
-    res.send("Servidor WuW")
+    res.send("Servidor de Scalet")
 })
 
 app.listen(3000, () => {
