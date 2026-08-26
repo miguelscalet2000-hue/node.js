@@ -32,7 +32,7 @@ app.get("/", (req, res) =>{
 })
 
 app.listen(3000, () => {
-    console.log("Servidor em WuW http://localhost:3000");
+    console.log("Servidor de Scalet http://localhost:3000");
 });
 
 
